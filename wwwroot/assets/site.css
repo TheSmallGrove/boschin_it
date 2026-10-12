@@ -95,7 +95,7 @@ svg { width: 1.05em; height: 1.05em; fill: none; stroke: currentColor; stroke-wi
 /* Small sans labels: kickers, dates, captions, navigation. */
 .eyebrow, .hero-sub, .stats dd, .nav-links a, .btn, .job-when, .tech, .chip, .app-facts,
 .mvp-award-years, .edu-year, .cefr dt, .code-tags code, .footer, .lang summary, .contact-place,
-.mvp-pill, .portrait-card span, .cert-link, .now, .earlier span {
+.mvp-pill, .cert-link, .now, .earlier span {
   font-family: var(--sans);
 }
 
@@ -159,56 +159,61 @@ svg { width: 1.05em; height: 1.05em; fill: none; stroke: currentColor; stroke-wi
 .lang li a:hover { color: var(--accent); }
 .lang li a[aria-current="page"] { color: var(--ink); font-style: italic; }
 
-/* ---------- Hero: the cover ---------- */
+/* ---------- Hero: the cover ----------
+   Copy and portrait share one grid (their wrappers are display: contents), so
+   the bottom of the photograph can sit exactly on the rule under the name:
+     row 1  kicker            | photo
+     row 2  name              | photo
+     row 3  rule under the name, stopping at the gutter before the photo
+     row 4… role, lead, links | MVP logo                                       */
 .hero { position: relative; padding: clamp(36px, 5vw, 64px) 0 0; }
 .hero-glow { display: none; }
-.hero-grid { display: grid; grid-template-columns: 1fr minmax(240px, 30%); gap: clamp(28px, 5vw, 72px); align-items: start; }
+.hero-grid {
+  display: grid; grid-template-columns: 1fr minmax(240px, 30%);
+  column-gap: clamp(28px, 5vw, 72px); align-items: start;
+}
+.hero-copy, .hero-visual, .portrait { display: contents; }
+.hero-grid::before {
+  content: ""; grid-column: 1; grid-row: 3; border-top: 1px solid var(--rule);
+}
 .mvp-pill {
+  grid-column: 1; grid-row: 1; justify-self: start;
   display: inline-flex; align-items: center; gap: 12px;
   color: var(--muted); font-size: .74rem; font-weight: 500; text-transform: uppercase; letter-spacing: .09em; text-decoration: none;
 }
 .mvp-pill:hover { color: var(--ink); text-decoration: none; }
 .mvp-pill-badge { color: var(--accent); font-weight: 700; padding-right: 12px; border-right: 1px solid var(--hair); }
-.hero h1 { margin: 22px 0 0; font-weight: 700; }
 .hero-name {
-  display: block; font-size: clamp(3.6rem, 10.5vw, 9.4rem); line-height: .9; letter-spacing: -.04em;
+  grid-column: 1; grid-row: 2; align-self: end;
+  margin: 22px 0 0; padding-bottom: clamp(22px, 3vw, 36px);
+  font-size: clamp(3.6rem, 10.5vw, 9.4rem); font-weight: 700; line-height: .9; letter-spacing: -.04em;
   font-variation-settings: "opsz" 72;
 }
 .hero-name .dot { color: var(--accent); }
+.hero-role, .hero-sub, .hero-lead, .hero-cta, .hero-note { grid-column: 1; }
 .hero-role {
-  display: block; margin-top: clamp(22px, 3vw, 36px); padding-top: 18px; border-top: 1px solid var(--rule);
-  font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-style: italic; font-weight: 400; letter-spacing: -.01em; line-height: 1.15;
+  grid-row: 4; margin: 18px 0 0;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-style: italic; font-weight: 400; letter-spacing: -.01em; line-height: 1.15; color: var(--ink);
 }
 .hero-sub { color: var(--muted); font-size: .74rem; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; margin: 12px 0 28px; }
 .hero-lead { font-size: clamp(1.2rem, 1.8vw, 1.45rem); line-height: 1.5; color: var(--fg); max-width: 40ch; }
-.hero-lead::first-letter {
-  float: left; font-size: 4.1em; line-height: .78; font-weight: 700; color: var(--accent);
-  margin: .06em .08em 0 0;
+/* Drop cap: three lines tall where initial-letter is supported, a float elsewhere. */
+.hero-lead::first-letter { float: left; font-size: 3.6em; line-height: .8; font-weight: 700; color: var(--accent); margin: .04em .08em 0 0; }
+@supports (initial-letter: 3) or (-webkit-initial-letter: 3) {
+  .hero-lead::first-letter { float: none; font-size: inherit; line-height: inherit; margin: 0 .1em 0 0; -webkit-initial-letter: 3; initial-letter: 3; }
 }
 .ai-text { color: var(--accent); font-style: italic; font-weight: 600; }
 .hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 26px; margin: 32px 0 18px; }
 .hero-note { font-size: .98rem; font-style: italic; color: var(--muted); max-width: 60ch; }
 
-.hero-visual { padding-top: 8px; }
-.portrait { position: relative; }
 .portrait > img {
-  width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 58% 40%;
-  filter: grayscale(1) contrast(1.05);
-  transition: filter .6s ease;
+  grid-column: 2; grid-row: 1 / 3; align-self: end;
+  width: 100%; aspect-ratio: 1; object-fit: cover; object-position: 58% 40%;
 }
-.portrait:hover > img { filter: none; }
-/* The MVP logo becomes the caption under the photograph. */
-.portrait-card {
-  display: flex; align-items: center; justify-content: space-between; gap: 14px;
-  margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--rule);
-  color: var(--ink); text-decoration: none;
-}
-.portrait-card img { width: 120px; }
-:root[data-theme="dark"] .portrait-card img { filter: invert(1) hue-rotate(180deg); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .portrait-card img { filter: invert(1) hue-rotate(180deg); } }
-.portrait-card span { font-size: .74rem; font-weight: 500; letter-spacing: .1em; color: var(--muted); }
-a.portrait-card:hover { text-decoration: none; }
-a.portrait-card:hover span { color: var(--accent); }
+/* The standard MVP logo, under the photograph, right-aligned. */
+.portrait-card { grid-column: 2; grid-row: 4 / span 3; justify-self: end; width: min(100%, 220px); margin-top: 18px; text-decoration: none; }
+.portrait-card img { width: 100%; transition: opacity .2s ease; }
+a.portrait-card:hover img { opacity: .85; }
 
 .stats {
   display: grid; grid-template-columns: repeat(4, 1fr);
@@ -413,8 +418,14 @@ a.portrait-card:hover span { color: var(--accent); }
 }
 @media (max-width: 960px) {
   :root { --gutter: 0px; }
-  .hero-grid, .mvp-grid { grid-template-columns: 1fr; }
-  .hero-visual { max-width: 340px; }
+  .mvp-grid { grid-template-columns: 1fr; }
+  .hero-grid { display: flex; flex-direction: column; align-items: stretch; }
+  .hero-grid::before { display: none; }
+  .portrait > img { order: -2; max-width: 340px; align-self: flex-end; }
+  .portrait-card { order: -1; align-self: flex-end; margin: 14px 0 8px; }
+  .portrait-card { width: 160px; }
+  .mvp-pill { align-self: flex-start; }
+  .hero-name { padding-bottom: 22px; border-bottom: 1px solid var(--rule); }
   .section-head { grid-template-columns: 1fr; }
   .section-head::before { grid-row: auto; margin-bottom: 14px; font-size: 4.5rem; }
   .stats { grid-template-columns: repeat(2, 1fr); row-gap: 22px; }
