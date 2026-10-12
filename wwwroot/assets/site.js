@@ -85,6 +85,39 @@
     a.addEventListener('click', arm);
   });
 
+  // Language menu: remember the choice and close the menu on outside click.
+  document.querySelectorAll('.lang a[data-lang]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      try { localStorage.setItem('ab.lang', a.getAttribute('data-lang')); } catch (e) {}
+    });
+  });
+  document.addEventListener('click', function (e) {
+    document.querySelectorAll('details.lang[open]').forEach(function (d) {
+      if (!d.contains(e.target)) d.removeAttribute('open');
+    });
+  });
+
+  // CV download: like the address, the file path is not in the markup and the
+  // link is armed only on a real interaction, so crawlers do not discover it.
+  var CV = 'ZmRwLmViZGIyOTBjN2ZhYi12Yy9zZWxpZi9zdGVzc2E=';
+  function cvPath() {
+    try { return atob(CV).split('').reverse().join(''); } catch (e) { return ''; }
+  }
+  document.querySelectorAll('[data-cv]').forEach(function (a) {
+    function arm() {
+      if (a.dataset.armed) return;
+      var path = cvPath();
+      if (!path) return;
+      a.dataset.armed = '1';
+      a.setAttribute('href', path);
+      a.setAttribute('download', 'Andrea-Boschin-CV.pdf');
+    }
+    ['pointerenter', 'focus', 'touchstart', 'mousedown'].forEach(function (ev) {
+      a.addEventListener(ev, arm, { passive: true, once: true });
+    });
+    a.addEventListener('click', arm);
+  });
+
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 })();

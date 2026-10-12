@@ -1,3 +1,4 @@
 # CV documents with personal data (phone, home address, email): kept local only
 docs/CV-*.docx
 docs/CV-*.md
+docs/CV-*.pdf
