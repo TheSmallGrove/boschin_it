@@ -29,9 +29,8 @@ language menu is remembered and wins over the browser setting.
 
 ## Deploy
 
-> **Temporarily disabled:** the workflow is parked in `.github/workflows-disabled/` because the
-> token used to push lacks the `workflow` scope. To enable it, move it back to `.github/workflows/`
-> and push with a token that has that scope.
+Pushing changes to the workflow requires a credential with the `workflow` scope
+(`gh auth refresh -s workflow` when git authenticates through `gh`).
 
 `.github/workflows/pages.yml` publishes `wwwroot/` to GitHub Pages on every push to `main`
 (or by hand, from the Actions tab). It first re-runs `tools/build_i18n.py` and fails if the
