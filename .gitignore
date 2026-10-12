@@ -1,0 +1,7 @@
+# CV documents with personal data (phone, home address, email): kept local only
+docs/CV-*.docx
+docs/CV-*.md
+docs/CV-*.pdf
+
+# Certificates: the source PDFs stay local, the site shows an image rendered from them
+docs/PSM*.pdf
