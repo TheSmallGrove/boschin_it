@@ -4,7 +4,7 @@ Personal CV website of Andrea Boschin — a static site, no build tooling requir
 
 | Path | Content |
 |---|---|
-| `wwwroot/` | The site: `index.html` (English) and the generated `it.html`, `es.html`, `de.html`, `fr.html` |
+| `wwwroot/` | The site: `index.html` (English) and the generated `it.html`, `es.html`, `de.html`, `fr.html` and `sitemap.xml`; `robots.txt` |
 | `wwwroot/assets/` | Stylesheet, script and images |
 | `wwwroot/assets/files/` | Downloadable CV (PDF). Its path is encoded in `site.js` (`CV`), never written in the HTML: when the PDF changes, re-encode the new path |
 | `i18n/` | Translations: one JSON per language, mapping exact English fragments of `index.html` to the translated text |
@@ -23,6 +23,20 @@ The script stops without writing anything when an English fragment listed in `i1
 is no longer found in `index.html`, or when the language files do not share the same keys:
 update the key and its translations, then run it again. Never edit `it.html`, `es.html`,
 `de.html` or `fr.html` directly — they are overwritten on every run.
+
+The script also writes the head tags that differ by language — canonical address, `hreflang`
+alternates, Open Graph address and locale, `ProfilePage` JSON-LD — between
+`<!-- i18n:seo -->` and `<!-- /i18n:seo -->` of every page, `index.html` included, and
+`wwwroot/sitemap.xml`. Adding a language to `LANGS` updates all of them.
+
+## SEO
+
+- `index.html` holds the title, description, Open Graph preview (the portrait) and the `Person`
+  JSON-LD (job title, MVP award, PSM I credential, LinkedIn); the translations replace the
+  English fragments listed in `i18n/*.json`.
+- Every page points to its own address (`canonical`) and to the other languages (`hreflang`);
+  the English page is the site root, `https://www.boschin.it/` (the domain is `SITE` in the script).
+- `wwwroot/robots.txt` allows everything except `/assets/files/` (the CV) and names the sitemap.
 
 `index.html` redirects first-time visitors to their browser language; the choice made in the
 language menu is remembered and wins over the browser setting.

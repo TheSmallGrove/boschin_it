@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+# The CV (personal data) is linked only through the page script: keep it out of search results.
+Disallow: /assets/files/
+
+Sitemap: https://www.boschin.it/sitemap.xml
