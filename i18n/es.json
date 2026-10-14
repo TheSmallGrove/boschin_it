@@ -1,5 +1,22 @@
 {
   "locale": "es_ES",
+  "date": {
+    "format": "{d} de {month} de {y}",
+    "months": [
+      "enero",
+      "febrero",
+      "marzo",
+      "abril",
+      "mayo",
+      "junio",
+      "julio",
+      "agosto",
+      "septiembre",
+      "octubre",
+      "noviembre",
+      "diciembre"
+    ]
+  },
   "strings": {
     "content=\"Andrea Boschin — Software & Cloud Architect, Senior Full Stack Developer and Scrum Master. Microsoft MVP for ten consecutive years, agentic AI engineering, Azure cloud transformation.\"": "content=\"Andrea Boschin — Software & Cloud Architect, Senior Full Stack Developer y Scrum Master. Microsoft MVP durante diez años consecutivos, ingeniería con IA agéntica, transformación cloud en Azure.\"",
     "content=\"25+ years in enterprise software. Microsoft MVP 2007–2017. Agentic AI engineering and Azure cloud architecture.\"": "content=\"Más de 25 años en software empresarial. Microsoft MVP 2007–2017. Ingeniería con IA agéntica y arquitectura cloud en Azure.\"",
@@ -77,13 +94,13 @@
     "Evolution of a custom ERP and document management product: UI/UX redesign, WCF backend development, analysis and team training.": "Evolución de un producto ERP y de gestión documental a medida: rediseño UI/UX, desarrollo del backend WCF, análisis y formación del equipo.",
     "<h3>Freelance consultant <span class=\"at\">· Microsoft MVP years</span></h3>": "<h3>Consultor freelance <span class=\"at\">· los años como Microsoft MVP</span></h3>",
     "Alongside employment: consultant, trainer and tutor, library development and support to software design and development for many companies.": "En paralelo al trabajo por cuenta ajena: consultor, formador y tutor, desarrollo de librerías y apoyo al diseño y desarrollo de software para muchas empresas.",
+    "Nearly <strong>40 clients</strong> followed for tutoring, architecture, team building and troubleshooting.": "Casi <strong>40 clientes</strong> acompañados en tutoría, arquitectura, team building y troubleshooting.",
     "<h3>Earlier experience</h3>": "<h3>Experiencia anterior</h3>",
     "Senior Developer, real-time GPS data platform": "Senior Developer, plataforma de datos GPS en tiempo real",
     "Developer, CRM portal and custom CMS (AirDolomiti website)": "Developer, portal CRM y CMS a medida (web de AirDolomiti)",
     "Analyst/Engineer, .NET healthcare reporting solution": "Analista/Ingeniero, solución .NET de informes sanitarios",
     "Developer, SCORM e-learning platform with an early AJAX viewer": "Developer, plataforma e-learning SCORM con uno de los primeros visores AJAX",
     "Developer, used-car sales portal for Il Sole 24 Ore": "Developer, portal de venta de coches usados para Il Sole 24 Ore",
-    "Consultant/Developer, R&amp;D web publishing (ASP, Oracle 8i)": "Consultor/Developer, I+D en publicación web (ASP, Oracle 8i)",
     "<p class=\"eyebrow\">Skills</p>": "<p class=\"eyebrow\">Competencias</p>",
     "Main areas of expertise.": "Principales áreas de especialización.",
     "aria-label=\"Expertise\"": "aria-label=\"Especialización\"",
@@ -111,6 +128,7 @@
     "Connect on LinkedIn": "Conecta en LinkedIn",
     "Preganziol (TV), Italy": "Preganziol (TV), Italia",
     "Back to top ↑": "Volver arriba ↑",
+    "Last updated:": "Última actualización:",
     ">Azure cloud</a>": ">Cloud en Azure</a>",
     "<p class=\"eyebrow eyebrow-azure\">Azure cloud architecture</p>": "<p class=\"eyebrow eyebrow-azure\">Arquitectura cloud en Azure</p>",
     "From legacy desktop to cloud-native SaaS on Azure.": "Del escritorio heredado al SaaS cloud-native en Azure.",
@@ -127,7 +145,7 @@
     "<h3>Azure PaaS in production</h3>": "<h3>Azure PaaS en producción</h3>",
     "Azure projects since 2016, from Cloud Services to today's serverless and managed services.": "Proyectos en Azure desde 2016, de Cloud Services a los actuales servicios serverless y gestionados.",
     "aria-label=\"Azure services\"": "aria-label=\"Servicios de Azure\"",
-    "<p class=\"eyebrow eyebrow-k8s\">Cloud-native development</p>": "<p class=\"eyebrow eyebrow-k8s\">Desarrollo cloud-native</p>",
+    "<p class=\"eyebrow eyebrow-k8s\">On-premise solutions</p>": "<p class=\"eyebrow eyebrow-k8s\">Soluciones on-premise</p>",
     "Software built to run on Kubernetes.": "Software diseñado para ejecutarse en Kubernetes.",
     "Containerized microservices, message-driven communication and a single product that deploys and configures itself on the cluster — designed with the development teams that build it.": "Microservicios en contenedores, comunicación basada en mensajes y un único producto que se despliega y se configura en el clúster — diseñado junto a los equipos de desarrollo que lo construyen.",
     "<h3>IoT platform on Kubernetes</h3>": "<h3>Plataforma IoT en Kubernetes</h3>",
@@ -162,8 +180,11 @@
     "aria-label=\"Professional Scrum Master I certificate\"": "aria-label=\"Certificado Professional Scrum Master I\"",
     "alt=\"Professional Scrum Master I certificate issued by Scrum.org to Andrea Boschin on 6 November 2018\"": "alt=\"Certificado Professional Scrum Master I emitido por Scrum.org a Andrea Boschin el 6 de noviembre de 2018\"",
     "aria-label=\"Close\"": "aria-label=\"Cerrar\"",
-    "aria-label=\"Cloud-native stack\"": "aria-label=\"Stack cloud-native\"",
+    "aria-label=\"Kubernetes stack\"": "aria-label=\"Stack Kubernetes\"",
     "<span>Download CV</span>": "<span>Descargar CV</span>",
-    "<span>Download CV (PDF, English)</span>": "<span>Descargar CV (PDF, en inglés)</span>"
+    "<span>Download CV (PDF, English)</span>": "<span>Descargar CV (PDF, en inglés)</span>",
+    "<h3>My roots <span class=\"at\">· Unisys Corporation</span></h3>": "<h3>Mis orígenes <span class=\"at\">· Unisys Corporation</span></h3>",
+    "Consultant / Developer: research &amp; development on web publishing, with dynamic web applications built with ASP on Oracle 8i.": "Consultor / Developer: investigación y desarrollo en publicación web, con aplicaciones web dinámicas desarrolladas con ASP sobre Oracle 8i.",
+    "Unisys was born in 1986 from the merger of Burroughs and Sperry, the maker of the UNIVAC computers: its UNIVAC 494 systems processed telemetry and communications at NASA Mission Control during the Apollo missions.": "Unisys nació en 1986 de la fusión entre Burroughs y Sperry, el fabricante de los ordenadores UNIVAC: sus sistemas UNIVAC 494 procesaban la telemetría y las comunicaciones en el Mission Control de la NASA durante las misiones Apolo."
   }
 }

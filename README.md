@@ -9,6 +9,7 @@ Personal CV website of Andrea Boschin — a static site, no build tooling requir
 | `wwwroot/assets/files/` | Downloadable CV (PDF). Its path is encoded in `site.js` (`CV`), never written in the HTML: when the PDF changes, re-encode the new path |
 | `i18n/` | Translations: one JSON per language, mapping exact English fragments of `index.html` to the translated text |
 | `tools/build_i18n.py` | Generates the translated pages from `index.html` and `i18n/*.json` |
+| `tools/last_updated.json` | Last-updated date and content fingerprint, written by `build_i18n.py` |
 | `docs/` | Source documents (the CV files with personal data are git-ignored) |
 
 ## Translations
@@ -28,6 +29,13 @@ The script also writes the head tags that differ by language — canonical addre
 alternates, Open Graph address and locale, `ProfilePage` JSON-LD — between
 `<!-- i18n:seo -->` and `<!-- /i18n:seo -->` of every page, `index.html` included, and
 `wwwroot/sitemap.xml`. Adding a language to `LANGS` updates all of them.
+
+The last-updated date is written by the script too: in the footer (`footer-updated`,
+formatted with the `date` block of each `i18n/*.json`), as `dateModified` in the JSON-LD and
+as `lastmod` in the sitemap. It becomes today's date only when `index.html` or a translation
+file changes: `tools/last_updated.json` stores the date with a fingerprint of that content, so
+re-running the script on unchanged content leaves the pages as they are. Commit that file
+together with the pages.
 
 ## SEO
 
