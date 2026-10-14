@@ -282,6 +282,13 @@ svg { width: 1.1em; height: 1.1em; fill: none; stroke: currentColor; stroke-widt
   transition: transform .25s ease;
 }
 .portrait-card img { width: 100%; }
+/* The award years, small in the white margin under the logo. The card stays
+   white in dark mode too, hence a fixed colour rather than a theme token. */
+.portrait-card-years {
+  position: absolute; right: 16px; bottom: 3px;
+  font-family: var(--mono); font-size: .5rem; line-height: 1; letter-spacing: .04em;
+  color: #0054a6;
+}
 a.portrait-card:hover { transform: translateY(-3px); }
 
 .stats {
@@ -499,6 +506,9 @@ a.portrait-card:hover { transform: translateY(-3px); }
 .job-card li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
 .job-card li.li-ai::before { background: var(--lime); box-shadow: 0 0 0 1.5px var(--ink) inset; }
 .tech { font-size: .76rem; color: var(--muted); margin: 0 !important; padding-top: 14px; border-top: 1px solid var(--line); line-height: 1.8; }
+/* Company logo under the dates, and a small aside on the company's history. */
+.job-logo { display: block; width: 104px; height: auto; margin-top: 14px; }
+.job-note { font-size: .9rem; color: var(--muted); }
 .earlier { padding: 0 !important; gap: 0 !important; }
 .earlier li { display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0 !important; border-top: 1px solid var(--line); }
 .earlier li:first-child { border-top: 0; }
@@ -573,10 +583,11 @@ a.portrait-card:hover { transform: translateY(-3px); }
 .i-li { fill: currentColor; stroke: none; }
 
 .footer { padding: 0 0 32px; font-size: .9rem; color: var(--muted); }
-.footer-inner { display: flex; justify-content: space-between; gap: 16px; padding-top: 22px; border-top: 1px solid var(--line); }
+.footer-inner { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-top: 22px; border-top: 1px solid var(--line); }
 .footer a { color: var(--muted); }
 .footer a:hover { color: var(--ink); text-decoration: none; }
 .footer-links { display: flex; gap: 22px; }
+.footer-updated { font-size: .8rem; }
 
 /* ---------- Reveal ---------- */
 .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .8, .2, 1); }
