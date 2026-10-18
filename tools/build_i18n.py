@@ -27,9 +27,10 @@ import hashlib
 import json
 import re
 import sys
-from datetime import date
+from datetime import date, datetime, time
 from pathlib import Path
 from xml.sax.saxutils import escape
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "wwwroot" / "index.html"
@@ -71,7 +72,8 @@ def seo_block(lang, locales, updated):
         "@id": f"{url(lang)}#page",
         "url": url(lang),
         "inLanguage": lang,
-        "dateModified": updated.isoformat(),
+        # Google wants a full DateTime here (a bare date is flagged as invalid): midnight, Italian time.
+        "dateModified": datetime.combine(updated, time(), ZoneInfo("Europe/Rome")).isoformat(),
         "mainEntity": {"@id": f"{SITE}/#person"},
     }
     lines.append(f'<script type="application/ld+json">{json.dumps(data)}</script>')
