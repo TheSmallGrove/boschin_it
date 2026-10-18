@@ -99,7 +99,7 @@
 
   // CV download: like the address, the file path is not in the markup and the
   // link is armed only on a real interaction, so crawlers do not discover it.
-  var CV = 'ZmRwLjQ5NWU4NjVjZTM4ZC12Yy9zZWxpZi9zdGVzc2E=';
+  var CV = 'ZmRwLjQ2MWIzYTcwODNjNS12Yy9zZWxpZi9zdGVzc2E=';
   function cvPath() {
     try { return atob(CV).split('').reverse().join(''); } catch (e) { return ''; }
   }
