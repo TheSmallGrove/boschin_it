@@ -574,7 +574,9 @@ a.portrait-card:hover { transform: translateY(-3px); }
 .contact .btn:hover { background: #fff; border-color: #fff; }
 .contact .btn-ghost { margin: 0; background: transparent; border-color: var(--line-strong); color: var(--ink); }
 .contact .btn-ghost:hover { background: transparent; border-color: #fff; }
-.contact .contact-cv { margin-block: 0 18px; }
+.contact .contact-cv { display: flex; flex-wrap: wrap; justify-content: inherit; gap: 10px; margin-block: 0 18px; }
+/* The Italian CV is offered only on the Italian page; the other languages get the English one. */
+html:not([lang="it"]) .cv-it { display: none; }
 .contact .contact-alt { margin-block: 0 6px; }
 .contact-alt a { display: inline-flex; align-items: center; gap: .45em; font-weight: 600; color: var(--ink); }
 .contact .contact-place { font-size: .76rem; text-transform: uppercase; letter-spacing: .1em; margin-block: 14px 0; color: var(--muted); }

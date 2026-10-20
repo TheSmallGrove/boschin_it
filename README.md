@@ -6,7 +6,7 @@ Personal CV website of Andrea Boschin — a static site, no build tooling requir
 |---|---|
 | `wwwroot/` | The site: `index.html` (English) and the generated `it.html`, `es.html`, `de.html`, `fr.html` and `sitemap.xml`; `robots.txt` |
 | `wwwroot/assets/` | Stylesheet, script and images |
-| `wwwroot/assets/files/` | Downloadable CV (PDF). Its path is encoded in `site.js` (`CV`), never written in the HTML: when the PDF changes, re-encode the new path |
+| `wwwroot/assets/files/` | Downloadable CVs (PDF), named after their content: `CV-Andrea-Boschin-EN.pdf` and `CV-Andrea-Boschin-IT.pdf`. The paths are encoded in `site.js` (`CV`, keyed by language), never written in the HTML: when a file name changes, re-encode its path. A link with `data-cv="<lang>"` downloads that CV, a bare `data-cv` the CV of the page language (English when there is none). The Italian CV link is shown only on the Italian page (`.cv-it` in `site.css`) |
 | `i18n/` | Translations: one JSON per language, mapping exact English fragments of `index.html` to the translated text |
 | `tools/build_i18n.py` | Generates the translated pages from `index.html` and `i18n/*.json` |
 | `tools/last_updated.json` | Last-updated date and content fingerprint, written by `build_i18n.py` |
