@@ -99,14 +99,20 @@
 
   // CV download: like the address, the file path is not in the markup and the
   // link is armed only on a real interaction, so crawlers do not discover it.
-  var CV = 'ZmRwLjQ2MWIzYTcwODNjNS12Yy9zZWxpZi9zdGVzc2E=';
-  function cvPath() {
-    try { return atob(CV).split('').reverse().join(''); } catch (e) { return ''; }
+  // One CV per language: a link with data-cv="<lang>" asks for that one, a bare data-cv
+  // gets the CV of the page language, and languages without their own get the English one.
+  var CV = {
+    en: 'ZmRwLk5FLW5paGNzb0ItYWVyZG5BLVZDL3NlbGlmL3N0ZXNzYQ==',
+    it: 'ZmRwLlRJLW5paGNzb0ItYWVyZG5BLVZDL3NlbGlmL3N0ZXNzYQ=='
+  };
+  function cvPath(lang) {
+    var code = CV[lang] || CV[document.documentElement.lang] || CV.en;
+    try { return atob(code).split('').reverse().join(''); } catch (e) { return ''; }
   }
   document.querySelectorAll('[data-cv]').forEach(function (a) {
     function arm() {
       if (a.dataset.armed) return;
-      var path = cvPath();
+      var path = cvPath(a.getAttribute('data-cv'));
       if (!path) return;
       a.dataset.armed = '1';
       a.setAttribute('href', path);
