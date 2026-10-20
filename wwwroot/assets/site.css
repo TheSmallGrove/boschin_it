@@ -520,6 +520,14 @@ a.portrait-card:hover { transform: translateY(-3px); }
 .card { padding: clamp(24px, 2.6vw, 32px); border-radius: var(--r); background: var(--tile-bg); }
 .card h3 { margin-bottom: 12px; }
 .card p { color: var(--muted); font-size: .98rem; }
+/* Interests follow Skills on the same background: the Skills bottom padding is the only gap. */
+.section-interests { padding-top: 0; }
+/* Interests: four text cards on the left (2 + 2), the photo on the right across both rows.
+   The image is positioned out of the flow, so the row heights come from the cards alone. */
+.interests-photo { grid-column: 3; grid-row: 1 / span 2; position: relative; margin: 0; border-radius: var(--r); overflow: hidden; background: var(--tile-bg); }
+.interests-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.interest-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.interest-links .cert-link { margin-top: 0; }
 .cefr { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 8px 0 0; }
 .cefr div { padding: 10px 10px 8px; border-radius: 12px; background: var(--bg); }
 .cefr dt { font-size: .64rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
@@ -620,6 +628,8 @@ html:not([lang="it"]) .cv-it { display: none; }
   .mvp-logo { max-width: 520px; }
   .apps { grid-template-columns: 1fr; }
   .cards3 { grid-template-columns: 1fr; }
+  .interests-photo { grid-column: auto; grid-row: auto; }
+  .interests-photo img { position: static; aspect-ratio: 4 / 3; height: auto; }
   .job { grid-template-columns: 1fr; gap: 10px; }
   .job-when { padding-top: 0; }
 }
